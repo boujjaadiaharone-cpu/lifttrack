@@ -1,10 +1,1 @@
-{
-  "name":"LiftTrack",
-  "short_name":"LiftTrack",
-  "start_url":"./index.html",
-  "scope":"./",
-  "display":"standalone",
-  "background_color":"#f6f7fb",
-  "theme_color":"#f6f7fb",
-  "lang":"fr-FR"
-}
+{"name":"LiftTrack","short_name":"LiftTrack","start_url":"./index.html","scope":"./","display":"standalone","background_color":"#f5f6fb","theme_color":"#f5f6fb","lang":"fr-FR"}

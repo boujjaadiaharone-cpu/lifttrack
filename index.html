@@ -1,154 +1,35 @@
-<!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f6f7fb">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="LiftTrack">
-<title>LiftTrack</title>
+<!doctype html><html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5f6fb"><meta name="apple-mobile-web-app-capable" content="yes"><title>LiftTrack V3</title>
 <link rel="manifest" href="manifest.json">
 <style>
-:root{
- --bg:#f6f7fb;--surface:#fff;--surface2:#f0f1f6;--text:#17181d;--muted:#777b88;
- --accent:#635bff;--accent2:#8b7cff;--green:#25b77b;--orange:#ff9f43;--red:#ef5b70;
- --line:#e6e7ed;--shadow:0 10px 30px rgba(28,31,45,.08);--radius:22px
-}
-*{box-sizing:border-box}html{background:var(--bg)}
-body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Arial,sans-serif}
-button,input,select,textarea{font:inherit}button{border:0}
-.app{max-width:760px;margin:auto;min-height:100vh;padding-bottom:104px}
-.header{padding:20px 18px 10px;position:sticky;top:0;z-index:5;background:rgba(246,247,251,.9);backdrop-filter:blur(18px)}
-.brand{font-size:28px;font-weight:850;letter-spacing:-1px}.hello{color:var(--muted);font-size:14px;margin-top:3px}
-.content{padding:8px 16px}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:17px;margin:12px 0;box-shadow:var(--shadow)}
-.hero{color:#fff;background:linear-gradient(135deg,#6158ff,#8e79ff);border:0;overflow:hidden;position:relative}
-.hero:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.11);right:-45px;top:-55px}
-.hero .big{font-size:35px;font-weight:850;letter-spacing:-1px}.big{font-size:30px;font-weight:800}
-.muted{color:var(--muted)}.white-muted{color:rgba(255,255,255,.78)}
-.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat{background:var(--surface2);border-radius:17px;padding:14px}.stat b{display:block;font-size:22px;margin-top:4px}
-.btn{background:var(--accent);color:white;padding:12px 16px;border-radius:14px;font-weight:750;box-shadow:0 6px 16px rgba(99,91,255,.2)}
-.btn.secondary{background:var(--surface2);color:var(--text);box-shadow:none}.btn.green{background:var(--green)}.btn.danger{background:#fff0f2;color:#d43e55;box-shadow:none}.full{width:100%}
-.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.9);backdrop-filter:blur(18px);border-top:1px solid var(--line);z-index:10}
-.navin{width:min(760px,100%);margin:auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.nav button{background:none;color:#8a8d98;padding:10px 3px 12px;font-size:11px;font-weight:650}.nav button.active{color:var(--accent)}.nav span{display:block;font-size:22px;line-height:24px;margin-bottom:2px}
-.section-title{font-size:19px;font-weight:800;margin:22px 3px 8px}.pill{background:#eeeefe;color:var(--accent);padding:6px 9px;border-radius:99px;font-size:12px;font-weight:700}
-.exercise{padding:14px 0;border-bottom:1px solid var(--line)}.exercise:last-child{border:0}
-.inputs{display:grid;grid-template-columns:1fr 1fr 82px;gap:8px;margin-top:10px}.input{width:100%;background:var(--surface2);border:1px solid transparent;color:var(--text);padding:11px;border-radius:12px;outline:none}.input:focus{border-color:var(--accent)}
-.check{background:#e7f8f0;color:#14895b;padding:11px;border-radius:12px;font-weight:800}
-.bar{height:9px;background:#e9eaf0;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px}
-.photo{height:190px;border-radius:17px;background:linear-gradient(135deg,#ececf5,#f8f8fb);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:12px;color:var(--muted)}
-.photo img{width:100%;height:100%;object-fit:cover}.meal{display:flex;gap:12px;align-items:center}.thumb{width:64px;height:64px;border-radius:15px;object-fit:cover;background:var(--surface2)}
-.iconbox{width:44px;height:44px;border-radius:14px;background:#eeecff;display:grid;place-items:center;font-size:21px}
-.modal{position:fixed;inset:0;background:rgba(20,20,28,.45);backdrop-filter:blur(5px);z-index:30;display:flex;align-items:flex-end}.sheet{background:var(--surface);width:100%;max-width:760px;margin:auto;border-radius:26px 26px 0 0;padding:20px;max-height:91vh;overflow:auto}.sheet h2{margin:0 0 15px}
-.field{margin:12px 0}.field label{display:block;color:var(--muted);font-size:13px;margin-bottom:6px;font-weight:650}.textarea{min-height:90px;resize:vertical}
-.empty{text-align:center;padding:38px 14px;color:var(--muted)}.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#17181d;color:white;padding:11px 16px;border-radius:99px;z-index:40;font-weight:750;box-shadow:var(--shadow)}
-.small{font-size:13px}.trend{font-size:13px;color:var(--green);font-weight:700}
-@media(max-width:390px){.inputs{grid-template-columns:1fr 1fr 70px}.card{padding:15px}}
-</style>
-</head>
-<body>
-<div id="app"></div>
+:root{--bg:#f5f6fb;--card:#fff;--ink:#15161b;--muted:#747783;--line:#e7e8ef;--purple:#6657ff;--purple2:#8a79ff;--green:#22b878;--gold:#f4b740;--shadow:0 10px 28px #1b1d2a12}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif}.app{max-width:760px;margin:auto;padding-bottom:100px}.top{padding:18px;position:sticky;top:0;background:#f5f6fbea;backdrop-filter:blur(18px);z-index:5}.logo{font-size:28px;font-weight:900;letter-spacing:-1px}.sub{color:var(--muted);font-size:13px}.content{padding:4px 16px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:17px;margin:12px 0;box-shadow:var(--shadow)}.hero{background:linear-gradient(135deg,#6255ff,#8d7aff);color:#fff;border:0}.hero h1{font-size:29px;margin:5px 0}.muted{color:var(--muted)}.white{color:#e8e5ff}.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#f0f1f7;padding:14px;border-radius:16px}.stat b{display:block;font-size:23px;margin-top:4px}.btn{background:var(--purple);color:white;border:0;border-radius:14px;padding:12px 16px;font-weight:800}.btn.light{background:#fff;color:var(--purple)}.btn.gray{background:#eff0f5;color:var(--ink)}.full{width:100%}.nav{position:fixed;bottom:0;left:0;right:0;background:#ffffffed;backdrop-filter:blur(18px);border-top:1px solid var(--line);z-index:10}.navin{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr)}.nav button{border:0;background:none;padding:9px;color:#858894;font-size:11px;font-weight:700}.nav button.active{color:var(--purple)}.nav span{font-size:21px;display:block}.rank{display:flex;align-items:center;gap:14px}.badge{width:66px;height:66px;border-radius:20px;display:grid;place-items:center;color:#fff;font-size:28px;font-weight:900;box-shadow:0 8px 18px #0002}.bronze{background:linear-gradient(135deg,#9d5d38,#d28b61)}.silver{background:linear-gradient(135deg,#737985,#c9cdd6)}.gold{background:linear-gradient(135deg,#d69a22,#ffd86a);color:#5c3d00}.mythic{background:linear-gradient(135deg,#d9419b,#754cff)}.legend{background:linear-gradient(135deg,#ff633f,#ffbf43)}.star{background:linear-gradient(135deg,#426dff,#35c7ff)}.pro{background:linear-gradient(135deg,#151827,#5e6480)}.bar{height:10px;background:#e7e8ef;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--purple2));border-radius:99px}.exercise{padding:14px 0;border-bottom:1px solid var(--line)}.exercise:last-child{border:0}.inputs{display:grid;grid-template-columns:1fr 1fr 75px;gap:8px;margin-top:9px}.input{width:100%;border:1px solid transparent;background:#f0f1f5;padding:11px;border-radius:12px;outline:none}.input:focus{border-color:var(--purple)}.check{background:#e4f7ee;color:#16875b;border:0;border-radius:12px;font-weight:800}.pill{background:#eeecff;color:var(--purple);border-radius:99px;padding:6px 9px;font-size:11px;font-weight:800}.title{font-size:20px;font-weight:850;margin:20px 2px 8px}.modal{position:fixed;inset:0;background:#16172266;backdrop-filter:blur(5px);z-index:30;display:flex;align-items:end}.sheet{background:white;width:100%;max-width:760px;margin:auto;border-radius:25px 25px 0 0;padding:20px;max-height:90vh;overflow:auto}.toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%);background:#16171d;color:#fff;padding:11px 16px;border-radius:99px;z-index:40;font-weight:800}.small{font-size:13px}.medal{font-size:16px}.table{width:100%;border-collapse:collapse}.table td{padding:9px 4px;border-bottom:1px solid var(--line)}.center{text-align:center}
+</style></head><body><div id="app"></div>
 <script>
-const KEY="lifttrack_v2";
-let db=JSON.parse(localStorage.getItem(KEY)||"null")||{
- workouts:[],meals:[],water:0,exercises:[
- {id:"bench",name:"Développé couché",unit:"kg"},{id:"squat",name:"Squat",unit:"kg"},
- {id:"row",name:"Rowing",unit:"kg"},{id:"ohp",name:"Développé militaire",unit:"kg"},
- {id:"pullup",name:"Tractions",unit:"kg"},{id:"dip",name:"Dips",unit:"kg"}],active:null
-};
-let page="home";
-const $=id=>document.getElementById(id);
-function save(){localStorage.setItem(KEY,JSON.stringify(db))}
-function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-function go(p){page=p;render()}
-function lastSets(id){let a=[];db.workouts.forEach(w=>w.exercises?.forEach(e=>{if(e.id===id)e.sets?.forEach(s=>{if(s.weight!==""||s.reps!=="")a.push({...s,date:w.date})})}));return a}
-function best(id){let a=lastSets(id);return a.length?Math.max(...a.map(x=>+x.weight||0)):0}
-function e1rm(w,r){return w*(1+r/30)}
-function render(){
- document.getElementById("app").innerHTML=`<div class="app">
- <header class="header"><div class="brand">LiftTrack</div><div class="hello">${page==="home"?"Ton suivi, au même endroit.":page==="workout"?"Séance en cours":page==="meals"?"Alimentation & habitudes":"Progression & réglages"}</div></header>
- <main class="content">${page==="home"?home():page==="workout"?workout():page==="meals"?meals():progress()}</main></div>
- <nav class="nav"><div class="navin">
- <button class="${page==="home"?"active":""}" onclick="go('home')"><span>⌂</span>Accueil</button>
- <button class="${page==="workout"?"active":""}" onclick="go('workout')"><span>＋</span>Séance</button>
- <button class="${page==="meals"?"active":""}" onclick="go('meals')"><span>🍽</span>Repas</button>
- <button class="${page==="progress"?"active":""}" onclick="go('progress')"><span>↗</span>Progression</button>
- </div></nav>`;
-}
-function home(){
- let recent=db.workouts[0],vol=db.workouts.reduce((n,w)=>n+(w.volume||0),0),mealCount=db.meals.length;
- return `<section class="card hero"><div class="white-muted">BIENVENUE SUR LIFTTRACK</div><div class="hero big" style="margin:6px 0 8px">Construis ta progression.</div><div class="white-muted">Enregistre tes séances, tes performances et tes repas sans classement inutile.</div><div style="margin-top:16px"><button class="btn" style="background:#fff;color:#5d55ee" onclick="newWorkout()">Commencer une séance</button></div></section>
- <div class="grid"><div class="stat"><div class="muted">Séances</div><b>${db.workouts.length}</b></div><div class="stat"><div class="muted">Volume cumulé</div><b>${Math.round(vol)} kg</b></div></div>
- <div class="grid"><div class="stat"><div class="muted">Repas enregistrés</div><b>${mealCount}</b></div><div class="stat"><div class="muted">Eau aujourd'hui</div><b>${db.water} verres</b></div></div>
- <div class="section-title">Accès rapide</div>
- <div class="card"><div class="row"><div><b>🏋️ Nouvelle séance</b><div class="muted small">Poids, reps et séries</div></div><button class="btn" onclick="newWorkout()">Démarrer</button></div></div>
- <div class="card"><div class="row"><div><b>🍽️ Ajouter un repas</b><div class="muted small">Photo, aliments, quantités et notes</div></div><button class="btn secondary" onclick="addMeal()">Ajouter</button></div></div>
- <div class="section-title">Tes exercices</div>
- <div class="card">${db.exercises.slice(0,5).map(e=>`<div class="exercise"><div class="row"><div><b>${esc(e.name)}</b><div class="muted small">Meilleur poids : ${best(e.id)||"—"} ${e.unit}</div></div><span class="pill">${e.unit}</span></div></div>`).join("")}</div>`;
-}
-function newWorkout(){db.active={id:Date.now(),date:new Date().toISOString(),exercises:db.exercises.slice(0,4).map(e=>({id:e.id,name:e.name,sets:[]}))};save();go("workout")}
-function workout(){
- if(!db.active)return `<div class="empty">Aucune séance en cours.<br><button class="btn" style="margin-top:12px" onclick="newWorkout()">Nouvelle séance</button></div>`;
- let vol=db.active.exercises.reduce((n,e)=>n+e.sets.reduce((x,s)=>x+(+s.weight||0)*(+s.reps||0),0),0);
- return `<div class="card"><div class="row"><div><b>${new Date(db.active.date).toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"})}</b><div class="muted small">Volume : ${Math.round(vol)} kg</div></div><button class="btn green" onclick="finish()">Terminer</button></div></div>
- ${db.active.exercises.map((e,ei)=>exerciseCard(e,ei)).join("")}
- <button class="btn secondary full" onclick="chooseExercise()">＋ Ajouter un exercice</button>`;
-}
-function exerciseCard(e,ei){
- let bp=best(e.id),suggest=bp?bp+(e.id==="pullup"?0:2.5):0;
- return `<div class="card"><div class="row"><div><b>${esc(e.name)}</b><div class="muted small">Meilleur : ${bp||"—"} kg</div></div><span class="pill">${suggest?`Proposition ${suggest} kg`:"Commence léger"}</span></div>
- ${e.sets.map((s,si)=>`<div class="inputs"><input class="input" type="number" step=".5" value="${esc(s.weight)}" placeholder="kg" onchange="setVal(${ei},${si},'weight',this.value)"><input class="input" type="number" value="${esc(s.reps)}" placeholder="reps" onchange="setVal(${ei},${si},'reps',this.value)"><button class="${s.done?'check':'btn secondary'}" onclick="toggleSet(${ei},${si})">${s.done?"✓":"Série"}</button></div>`).join("")}
- <button class="btn secondary" style="margin-top:10px" onclick="addSet(${ei})">＋ Série</button></div>`;
-}
-function setVal(ei,si,k,v){db.active.exercises[ei].sets[si][k]=v;save()}
-function addSet(ei){db.active.exercises[ei].sets.push({weight:"",reps:"",done:false});save();render()}
-function toggleSet(ei,si){db.active.exercises[ei].sets[si].done=!db.active.exercises[ei].sets[si].done;save();render()}
-function finish(){
- let w=db.active;w.volume=w.exercises.reduce((n,e)=>n+e.sets.reduce((x,s)=>x+(+s.weight||0)*(+s.reps||0),0);w.exercises.forEach(e=>e.sets=e.sets.filter(s=>s.weight!==""||s.reps!==""));
- db.workouts.unshift(w);db.active=null;save();go("home");toast("Séance enregistrée ✓")
-}
-function chooseExercise(){
- let choices=db.exercises.filter(x=>!db.active.exercises.some(e=>e.id===x.id));
- document.body.insertAdjacentHTML("beforeend",`<div class="modal" id="m"><div class="sheet"><div class="row"><h2>Ajouter un exercice</h2><button class="btn secondary" onclick="m.remove()">Fermer</button></div>${choices.map(e=>`<button class="card full" style="text-align:left" onclick="db.active.exercises.push({id:'${e.id}',name:'${esc(e.name)}',sets:[]});save();m.remove();render()">${esc(e.name)}</button>`).join("")}</div></div>`)
-}
-function meals(){
- let today=new Date().toDateString(),todayMeals=db.meals.filter(m=>new Date(m.date).toDateString()===today);
- return `<section class="card hero"><div class="white-muted">ALIMENTATION</div><div class="big" style="margin:6px 0 8px">Mange avec plus de recul.</div><div class="white-muted">Ajoute une photo, les aliments, les quantités et tes observations. Pas de classement, pas de pression.</div><div style="margin-top:15px"><button class="btn" style="background:#fff;color:#5d55ee" onclick="addMeal()">＋ Ajouter un repas</button></div></section>
- <div class="grid"><div class="stat"><div class="muted">Repas aujourd'hui</div><b>${todayMeals.length}</b></div><div class="stat"><div class="muted">Hydratation</div><b>${db.water} verres</b></div></div>
- <div class="card"><div class="row"><div><b>💧 Hydratation</b><div class="muted small">Un repère simple, sans calcul de calories.</div></div><button class="btn secondary" onclick="addWater()">＋ Verre</button></div><div style="margin-top:14px" class="bar"><i style="width:${Math.min(db.water/8*100,100)}%"></i></div></div>
- <div class="section-title">Mes repas</div>
- ${db.meals.length?db.meals.map(m=>`<div class="card"><div class="meal">${m.photo?`<img class="thumb" src="${m.photo}">`:`<div class="iconbox">🍽️</div>`}<div style="flex:1"><b>${esc(m.name)}</b><div class="muted small">${new Date(m.date).toLocaleDateString("fr-FR",{day:"2-digit",month:"long"})} · ${esc(m.foods||"")}</div>${m.note?`<div class="small" style="margin-top:4px">${esc(m.note)}</div>`:""}</div></div></div>`).join(""):`<div class="card empty">Aucun repas enregistré.<br>Ajoute ton premier repas avec une photo.</div>`}`;
-}
-function addMeal(){
- document.body.insertAdjacentHTML("beforeend",`<div class="modal" id="m"><div class="sheet"><div class="row"><h2>Nouveau repas</h2><button class="btn secondary" onclick="m.remove()">Fermer</button></div>
- <div class="field"><label>Photo du repas</label><input id="photo" class="input full" type="file" accept="image/*" capture="environment" onchange="previewPhoto(event)"><div id="preview" class="photo">📷 Ajouter une photo</div></div>
- <div class="field"><label>Nom du repas</label><input id="mn" class="input full" placeholder="Ex. Poulet, riz et légumes"></div>
- <div class="field"><label>Aliments et quantités</label><textarea id="mf" class="input full textarea" placeholder="Ex. poulet 150 g, riz 200 g, légumes..."></textarea></div>
- <div class="field"><label>Commentaire</label><textarea id="note" class="input full" placeholder="Faim, énergie, repas avant/après entraînement..."></textarea></div>
- <button class="btn full" onclick="createMeal()">Enregistrer le repas</button></div></div>`)
-}
-let photoData="";
-function previewPhoto(ev){let f=ev.target.files?.[0];if(!f)return;let r=new FileReader();r.onload=()=>{photoData=r.result;$("preview").innerHTML=`<img src="${photoData}">`};r.readAsDataURL(f)}
-function createMeal(){
- let name=$("mn").value.trim()||"Repas";db.meals.unshift({id:Date.now(),date:new Date().toISOString(),name,foods:$("mf").value.trim(),note:$("note").value.trim(),photo:photoData});save();photoData="";m.remove();go("meals");toast("Repas enregistré ✓")
-}
-function addWater(){db.water++;save();render();toast("Hydratation +1")}
-function progress(){
- return `<div class="section-title">Progression</div>
- <div class="card"><div class="row"><div><b>Régularité</b><div class="muted small">Séances enregistrées</div></div><div class="big">${db.workouts.length}</div></div><div style="margin-top:14px" class="bar"><i style="width:${Math.min(db.workouts.length/12*100,100)}%"></i></div></div>
- ${db.exercises.map(e=>{let s=lastSets(e.id),b=best(e.id),last=s.at(-1),one=last?e1rm(+last.weight,+last.reps):0;return `<div class="card"><div class="row"><div><b>${esc(e.name)}</b><div class="muted small">${s.length} série${s.length>1?"s":""} enregistrée${s.length>1?"s":""}</div></div><span class="pill">${b||"—"} kg</span></div><div class="grid" style="margin-top:12px"><div class="stat"><div class="muted">Meilleur poids</div><b>${b||"—"} kg</b></div><div class="stat"><div class="muted">1RM estimé</div><b>${one?Math.round(one):"—"} kg</b></div></div></div>`}).join("")}
- <div class="section-title">Exercices</div><div class="card"><button class="btn full" onclick="addExercise()">＋ Ajouter un exercice</button><div style="margin-top:10px">${db.exercises.map(e=>`<div class="exercise row"><b>${esc(e.name)}</b><span class="muted">${e.unit}</span></div>`).join("")}</div></div>
- <div class="card"><b>Stockage</b><p class="muted small">Les données restent enregistrées localement sur cet appareil. Si tu effaces les données du navigateur, elles peuvent être perdues.</p><button class="btn danger full" onclick="resetData()">Réinitialiser les données</button></div>`;
-}
-function addExercise(){
- document.body.insertAdjacentHTML("beforeend",`<div class="modal" id="m"><div class="sheet"><h2>Nouvel exercice</h2><div class="field"><label>Nom</label><input id="en" class="input full" placeholder="Ex. Développé incliné"></div><button class="btn full" onclick="createExercise()">Ajouter</button><button class="btn secondary full" style="margin-top:8px" onclick="m.remove()">Annuler</button></div></div>`)
-}
-function createExercise(){let n=$("en").value.trim();if(!n)return;db.exercises.push({id:"x"+Date.now(),name:n,unit:"kg"});save();m.remove();render();toast("Exercice ajouté")}
-function resetData(){if(confirm("Supprimer les données LiftTrack sur cet appareil ?")){localStorage.removeItem(KEY);location.reload()}}
-function toast(s){let x=document.createElement("div");x.className="toast";x.textContent=s;document.body.append(x);setTimeout(()=>x.remove(),1800)}
-render();
-</script>
-</body>
-</html>
+const KEY="lifttrack_v3";let db=JSON.parse(localStorage.getItem(KEY)||"null")||{xp:0,workouts:[],meals:[],water:0,active:null,exercises:[
+{id:"bench",name:"Développé couché"},{id:"squat",name:"Squat"},{id:"row",name:"Rowing"},{id:"ohp",name:"Développé militaire"},{id:"pull",name:"Tractions"},{id:"dip",name:"Dips"}]};let page="home";
+const ranks=[["Bronze","bronze",0,"🥉"],["Argent","silver",500,"🥈"],["Or","gold",1200,"🥇"],["Mythique","mythic",2200,"✦"],["Légendaire","legend",3600,"♛"],["Star","star",5500,"★"],["Pro","pro",8000,"P"]];
+function save(){localStorage.setItem(KEY,JSON.stringify(db))}function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function rank(){let r=ranks[0];for(const x of ranks)if(db.xp>=x[2])r=x;return r}function nextRank(){let i=ranks.findIndex(x=>x[0]===rank()[0]);return ranks[i+1]||null}
+function xpGain(w){return Math.max(15,Math.round(Math.sqrt(w||0)*4))}function best(id){let a=[];db.workouts.forEach(w=>w.exercises?.forEach(e=>{if(e.id===id)e.sets?.forEach(s=>{if(+s.weight)a.push(+s.weight)})}));return a.length?Math.max(...a):0}
+function go(x){page=x;render()}function toast(s){let x=document.createElement("div");x.className="toast";x.textContent=s;document.body.append(x);setTimeout(()=>x.remove(),1800)}
+function render(){document.getElementById("app").innerHTML=`<div class="app"><header class="top"><div class="logo">LiftTrack</div><div class="sub">${page==="home"?"Ta progression, ton niveau.":page==="workout"?"Séance en cours":page==="rank"?"Progression de rang":page==="meals"?"Alimentation":"Statistiques"}</div></header><main class="content">${page==="home"?home():page==="workout"?workout():page==="rank"?ranking():page==="meals"?meals():stats()}</main></div><nav class="nav"><div class="navin"><button class="${page==="home"?"active":""}" onclick="go('home')"><span>⌂</span>Accueil</button><button class="${page==="workout"?"active":""}" onclick="go('workout')"><span>＋</span>Séance</button><button class="${page==="rank"?"active":""}" onclick="go('rank')"><span>🏆</span>Rang</button><button class="${page==="meals"?"active":""}" onclick="go('meals')"><span>🍽</span>Repas</button></div></nav>`}
+function home(){let r=rank(),n=nextRank(),pct=n?Math.min(100,(db.xp-r[2])/(n[2]-r[2])*100):100;return `<div class="card hero"><div class="white">TON RANG</div><div class="rank" style="margin-top:8px"><div class="badge ${r[1]}">${r[3]}</div><div><h1>${r[0]}</h1><div class="white">${db.xp} XP${n?" · "+(n[2]-db.xp)+" XP avant "+n[0]:" · Rang maximal"}</div></div></div><div class="bar" style="margin-top:16px;background:#ffffff3b"><i style="width:${pct}%;background:#fff"></i></div></div>
+<div class="grid"><div class="stat"><div class="muted">Séances</div><b>${db.workouts.length}</b></div><div class="stat"><div class="muted">XP total</div><b>${db.xp}</b></div></div>
+<div class="card"><div class="row"><div><b>🏋️ Prêt à progresser ?</b><div class="muted small">Une séance terminée rapporte de l'XP.</div></div><button class="btn" onclick="newWorkout()">Démarrer</button></div></div>
+<div class="title">Tes exercices</div><div class="card">${db.exercises.map(e=>`<div class="exercise row"><div><b>${esc(e.name)}</b><div class="muted small">Record : ${best(e.id)||"—"} kg</div></div><span class="pill">+ XP</span></div>`).join("")}</div>`}
+function newWorkout(){db.active={date:new Date().toISOString(),exercises:db.exercises.slice(0,4).map(e=>({id:e.id,name:e.name,sets:[]}))};save();go("workout")}
+function workout(){if(!db.active)return `<div class="card center">Aucune séance en cours.<br><button class="btn" style="margin-top:12px" onclick="newWorkout()">Nouvelle séance</button></div>`;return `<div class="card"><div class="row"><div><b>Nouvelle séance</b><div class="muted small">${new Date(db.active.date).toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"})}</div></div><button class="btn" onclick="finish()">Terminer</button></div></div>${db.active.exercises.map((e,ei)=>`<div class="card"><div class="row"><b>${esc(e.name)}</b><span class="pill">Record ${best(e.id)||"—"} kg</span></div>${e.sets.map((s,si)=>`<div class="inputs"><input class="input" type="number" step=".5" placeholder="kg" value="${s.weight||""}" onchange="val(${ei},${si},'weight',this.value)"><input class="input" type="number" placeholder="reps" value="${s.reps||""}" onchange="val(${ei},${si},'reps',this.value)"><button class="${s.done?'check':'btn gray'}" onclick="done(${ei},${si})">${s.done?"✓":"Série"}</button></div>`).join("")}<button class="btn gray" style="margin-top:10px" onclick="addSet(${ei})">＋ Série</button></div>`).join("")}<button class="btn gray full" onclick="addEx()">＋ Ajouter un exercice</button>`}
+function val(a,b,k,v){db.active.exercises[a].sets[b][k]=v;save()}function addSet(i){db.active.exercises[i].sets.push({weight:"",reps:"",done:false});save();render()}function done(a,b){db.active.exercises[a].sets[b].done=!db.active.exercises[a].sets[b].done;save();render()}
+function finish(){let w=db.active;w.volume=w.exercises.reduce((n,e)=>n+e.sets.reduce((x,s)=>x+(+s.weight||0)*(+s.reps||0),0);let gain=xpGain(w.volume)+w.exercises.reduce((n,e)=>n+e.sets.filter(s=>s.done).length*5,0);w.xp=gain;w.exercises.forEach(e=>e.sets=e.sets.filter(s=>s.weight||s.reps));db.workouts.unshift(w);db.active=null;let before=rank()[0];db.xp+=gain;save();go("home");toast(`+${gain} XP · ${rank()[0]!==before?"Nouveau rang !":"Séance enregistrée ✓"}`)}
+function ranking(){let r=rank(),n=nextRank(),pct=n?Math.min(100,(db.xp-r[2])/(n[2]-r[2])*100):100;return `<div class="card"><div class="rank"><div class="badge ${r[1]}">${r[3]}</div><div><h2 style="margin:0">${r[0]}</h2><div class="muted">${db.xp} XP</div></div></div><div class="bar" style="margin-top:18px"><i style="width:${pct}%"></i></div><p class="muted small">${n?`${n[2]-db.xp} XP avant ${n[0]}`:"Tu as atteint le rang Pro."}</p></div>
+<div class="title">Les rangs LiftTrack</div>${ranks.map(x=>`<div class="card"><div class="row"><div class="rank"><div class="badge ${x[1]}" style="width:48px;height:48px;border-radius:15px;font-size:21px">${x[3]}</div><div><b>${x[0]}</b><div class="muted small">${x[2]} XP minimum</div></div></div>${db.xp>=x[2]?'<span class="pill">Débloqué</span>':''}</div></div>`).join("")}
+<div class="card"><b>Comment gagner de l'XP ?</b><table class="table"><tr><td>Terminer une séance</td><td class="center">+15 XP minimum</td></tr><tr><td>Volume d'entraînement</td><td class="center">selon la séance</td></tr><tr><td>Valider une série</td><td class="center">+5 XP</td></tr></table><p class="muted small">Le système récompense la régularité et la progression, pas la comparaison avec les autres.</p></div>`}
+function meals(){return `<div class="card hero"><div class="white">ALIMENTATION</div><h1>Ton journal repas.</h1><div class="white">Photo, aliments, quantités et notes. Simple et sans pression.</div><button class="btn light" style="margin-top:15px" onclick="addMeal()">＋ Ajouter un repas</button></div><div class="grid"><div class="stat"><div class="muted">Repas</div><b>${db.meals.length}</b></div><div class="stat"><div class="muted">Eau</div><b>${db.water} verres</b></div></div><div class="card"><div class="row"><div><b>💧 Hydratation</b><div class="muted small">Repère quotidien simple</div></div><button class="btn gray" onclick="db.water++;save();render()">＋</button></div></div>${db.meals.length?db.meals.map(m=>`<div class="card"><b>${esc(m.name)}</b><div class="muted small">${esc(m.foods||"")}</div>${m.note?`<p class="small">${esc(m.note)}</p>`:""}</div>`).join(""):`<div class="card center muted">Aucun repas enregistré.</div>`}`}
+let photo="";function addMeal(){document.body.insertAdjacentHTML("beforeend",`<div class="modal" id="m"><div class="sheet"><div class="row"><h2>Nouveau repas</h2><button class="btn gray" onclick="m.remove()">Fermer</button></div><label class="muted small">Photo</label><input id="pf" class="input full" type="file" accept="image/*" capture="environment"><div class="field"><label>Nom</label><input id="mn" class="input full" placeholder="Ex. Poulet, riz, légumes"></div><div class="field"><label>Aliments et quantités</label><textarea id="mf" class="input full" style="height:90px" placeholder="Ex. poulet 150 g..."></textarea></div><div class="field"><label>Note</label><textarea id="nt" class="input full" style="height:70px"></textarea></div><button class="btn full" onclick="mealSave()">Enregistrer</button></div></div>`)}
+function mealSave(){db.meals.unshift({date:new Date().toISOString(),name:$("mn").value||"Repas",foods:$("mf").value,note:$("nt").value});save();m.remove();render();toast("Repas enregistré ✓")}
+function stats(){return `<div class="title">Statistiques</div><div class="grid"><div class="stat"><div class="muted">Séances</div><b>${db.workouts.length}</b></div><div class="stat"><div class="muted">Volume</div><b>${Math.round(db.workouts.reduce((n,w)=>n+(w.volume||0),0))} kg</b></div></div>${db.exercises.map(e=>`<div class="card"><div class="row"><b>${esc(e.name)}</b><span class="pill">${best(e.id)||"—"} kg</span></div><div class="muted small" style="margin-top:8px">Record personnel enregistré</div></div>`).join("")}`}
+function addEx(){let names=db.exercises.map(e=>e.name).join(", ");document.body.insertAdjacentHTML("beforeend",`<div class="modal" id="m"><div class="sheet"><h2>Ajouter un exercice</h2><input id="en" class="input full" placeholder="Nom de l'exercice"><button class="btn full" style="margin-top:12px" onclick="let n=$('en').value.trim();if(n){db.exercises.push({id:'x'+Date.now(),name:n});save();m.remove();render()}">Ajouter</button></div></div>`)}
+function $(x){return document.getElementById(x)}render();
+</script></body></html>
