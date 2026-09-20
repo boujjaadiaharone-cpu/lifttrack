@@ -67,7 +67,7 @@ function setVal(ei,si,k,v){db.active.exercises[ei].sets[si][k]=v;save()}
 function addSet(ei){db.active.exercises[ei].sets.push({weight:"",reps:"",done:false});save();render()}
 function toggleSet(ei,si){db.active.exercises[ei].sets[si].done=!db.active.exercises[ei].sets[si].done;save();render()}
 function finish(){
- let w=db.active;w.volume=w.exercises.reduce((n,e)=>n+e.sets.reduce((x,s)=>x+(+s.weight||0)*(+s.reps||0),0);
+ let w=db.active;w.volume=w.exercises.reduce((n,e)=>n+e.sets.reduce((x,s)=>x+(+s.weight||0)*(+s.reps||0),0),0);
  w.exercises.forEach(e=>{e.sets=e.sets.filter(s=>s.weight!==""||s.reps!=="")});
  db.workouts.unshift(w);db.active=null;save();go("home");toast("Séance enregistrée ✓")
 }
